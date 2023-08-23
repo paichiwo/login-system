@@ -1,4 +1,6 @@
 """Pet-Care-Tracker config file"""
 
-SQL_FILEPATH = './db/db.sql'
-DB_FILEPATH = './db/db.db'
+from src.helpers import resource_path
+
+SQL_FILEPATH = resource_path('db\\db.sql')
+DB_FILEPATH = resource_path('db\\db.db')
