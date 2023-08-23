@@ -1,10 +1,11 @@
-from src.helpers import create_database
-from src.config import sql_file_path, db_file_path
 import os
+from src.helpers import create_database
+from src.config import SQL_FILEPATH, DB_FILEPATH
 
-if not os.path.exists(db_file_path) and os.path.exists(sql_file_path):
-    create_database('db/db.db', 'db/db.sql')
+
+if not os.path.exists(DB_FILEPATH) and os.path.exists(SQL_FILEPATH):
+    create_database(DB_FILEPATH, SQL_FILEPATH)
     print("New database successfully created")
 else:
-    print("Database already exists")
+    print("Database exists")
 
