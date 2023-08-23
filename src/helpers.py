@@ -12,4 +12,3 @@ def create_database(database_path, sql_file_path):
     cursor.executescript(sql_commands)
     conn.commit()
     conn.close()
-    print("New database created successfully.")
