@@ -1,4 +1,3 @@
-import tkinter as tk
 import customtkinter as ctk
 from tkinter import messagebox
 
@@ -30,10 +29,10 @@ def login_window():
     label = ctk.CTkLabel(master=frame, text='Login frame')
     label.pack(pady=12, padx=10)
 
-    user_entry= ctk.CTkEntry(master=frame, placeholder_text="Username")
+    user_entry = ctk.CTkEntry(master=frame, placeholder_text="Username")
     user_entry.pack(pady=12, padx=10)
 
-    user_pass= ctk.CTkEntry(master=frame, placeholder_text="Password", show="*")
+    user_pass = ctk.CTkEntry(master=frame, placeholder_text="Password", show="*")
     user_pass.pack(pady=12, padx=10)
 
     button = ctk.CTkButton(master=frame, text='Login', command=login)
