@@ -1,4 +1,5 @@
 import os
+import re
 import sys
 import sqlite3
 
@@ -22,3 +23,9 @@ def create_database(database_path, sql_file_path):
     cursor.executescript(sql_commands)
     conn.commit()
     conn.close()
+
+
+def is_valid_email(email):
+    """Check for a valid email address format"""
+    email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(email_pattern, email)
