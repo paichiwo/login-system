@@ -9,4 +9,4 @@ class SignUpWindow(ctk.CTk):
         # Window setup
 
         self.title("Sign Up Window")
-        center_window(self, 400, 500)
+        center_window(self, 300, 500)

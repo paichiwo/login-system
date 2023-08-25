@@ -12,7 +12,7 @@ class LoginWindow(ctk.CTk):
         # Window setup
 
         self.title("Login Window")
-        center_window(self, 400, 500)
+        center_window(self, 300, 500)
 
         # UI elements
 
@@ -23,7 +23,7 @@ class LoginWindow(ctk.CTk):
         self.root_label.pack(pady=20)
 
         self.frame = ctk.CTkFrame(master=self)
-        self.frame.pack(pady=20, padx=40, fill='both', expand=True)
+        self.frame.pack(pady=20, padx=20, fill='both', expand=True)
 
         self.frame_top_label = ctk.CTkLabel(
             master=self.frame,
