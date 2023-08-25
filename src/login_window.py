@@ -1,7 +1,8 @@
 import customtkinter as ctk
 from tkinter import BOTTOM
 from src.app_window import AppWindow
-from src.helpers import is_valid_email
+from src.signup_window import SignUpWindow
+from src.helpers import center_window, is_valid_email
 
 
 class LoginWindow(ctk.CTk):
@@ -11,7 +12,7 @@ class LoginWindow(ctk.CTk):
         # Window setup
 
         self.title("Login Window")
-        self.geometry("400x500")
+        center_window(self, 400, 500)
 
         # UI elements
 
@@ -61,7 +62,7 @@ class LoginWindow(ctk.CTk):
             master=self.frame,
             text='Sign Up',
             width=200,
-            command=self.login)
+            command=self.signup)
         self.signup_button.pack(pady=24, padx=10, side=BOTTOM)
 
     def login(self):
@@ -77,7 +78,6 @@ class LoginWindow(ctk.CTk):
             if self.user_entry.get() == username and self.user_pass.get() == password:
                 self.destroy()
                 app = AppWindow()
-                app.eval('tk::PlaceWindow . center')
                 app.mainloop()
             else:
                 self.message_label.configure(text="Wrong credentials")
@@ -86,5 +86,6 @@ class LoginWindow(ctk.CTk):
 
     def signup(self):
         """Sign Up button callback"""
-
-
+        self.destroy()
+        signup = SignUpWindow()
+        signup.mainloop()
