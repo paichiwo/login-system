@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from src.helpers import center_window
 
 
 class AppWindow(ctk.CTk):
@@ -8,9 +9,9 @@ class AppWindow(ctk.CTk):
         # Window setup
 
         self.title("App Window")
-        self.geometry("800x600")
+        center_window(self, 800, 600)
 
         # UI elements
 
         self.label = ctk.CTkLabel(self, text="Login Successful\nThis is main app window")
-        self.label.pack()
+        self.label.pack(pady=12, padx=10)
