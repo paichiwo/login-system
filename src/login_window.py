@@ -171,8 +171,8 @@ class SignUpWindow(ctk.CTk):
 
     def cancel(self):
         self.destroy()
-        login_window = LoginWindow()
-        login_window.mainloop()
+        login_app = LoginApp()
+        login_app.mainloop()
 
     def delete_invalid_password_character(self):
         pass
