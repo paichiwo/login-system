@@ -1,5 +1,5 @@
 from src.helpers import create_database
-from src.login_window import LoginWindow
+from src.login_window import LoginApp
 
 
 def main():
@@ -7,8 +7,8 @@ def main():
 
     create_database()
 
-    login_window = LoginWindow()
-    login_window.mainloop()
+    login_app = LoginApp()
+    login_app.mainloop()
 
 
 if __name__ == "__main__":

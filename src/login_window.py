@@ -6,7 +6,7 @@ from src.app_window import AppWindow
 from src.helpers import center_window, is_valid_email, create_user, is_valid_password
 
 
-class LoginWindow(ctk.CTk):
+class LoginApp(ctk.CTk):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -144,7 +144,7 @@ class SignUpWindow(ctk.CTk):
 
         self.cancel_button = ctk.CTkButton(
             master=self.frame,
-            text='Cancel',
+            text='Go Back',
             width=200,
             command=self.cancel)
         self.cancel_button.pack(pady=24, padx=10, side=BOTTOM)
