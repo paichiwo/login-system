@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from src.helpers import center_window
 
 
 class SignUpWindow(ctk.CTk):
@@ -8,4 +9,4 @@ class SignUpWindow(ctk.CTk):
         # Window setup
 
         self.title("Sign Up Window")
-        self.geometry("400x500")
+        center_window(self, 400, 500)
