@@ -1,5 +1,9 @@
 # Pet care tracker data types
 
+## User Profile:
+- Email: String (for authentication and communication)
+- Password: String (securely hashed)
+- 
 ## Pet Profile:
 - Name: String
 - Breed: String
@@ -31,9 +35,3 @@
 - Description: String
 - Date Lost: DateTime
 - Last Seen Location: String (address or description)
-
-## User Profile:
-- Username: String
-- Email: String (for authentication and communication)
-- Password: String (securely hashed)
-- Location: String (for setting up user's initial location and for pet-friendly places feature)
