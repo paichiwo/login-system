@@ -1,9 +1,6 @@
 from src.helpers import Database
 from src.login_window import LoginApp
 
-# finish login func
-# fix id incrementation in db
-
 
 def main():
     """Initialize database and create a login window"""
