@@ -1,6 +1,7 @@
 import os
 import re
 import sys
+import string
 import sqlite3
 
 
@@ -13,64 +14,61 @@ def resource_path(relative_path):
     return os.path.join(os.path.abspath('.'), relative_path)
 
 
-SQL_FILEPATH = resource_path('db\\db.sql')
-DB_FILEPATH = resource_path('db\\db.db')
+class Database:
+    """Database manipulation methods"""
+    def __init__(self):
+        self.SQL_FILEPATH = resource_path('db\\db.sql')
+        self.DB_FILEPATH = resource_path('db\\db.db')
 
+        self.conn = sqlite3.connect(self.DB_FILEPATH)
+        self.cursor = self.conn.cursor()
 
-def create_database():
-    """Create a new database using an .sql file"""
+    def create_db(self):
+        """Create a new database using an .sql file"""
+        if not os.path.exists(self.DB_FILEPATH) and os.path.exists(self.SQL_FILEPATH):
+            with open(self.SQL_FILEPATH, "r", encoding='utf-8') as sql_file:
+                sql_commands = sql_file.read()
 
-    if not os.path.exists(DB_FILEPATH) and os.path.exists(SQL_FILEPATH):
-        conn = sqlite3.connect(DB_FILEPATH)
-        cursor = conn.cursor()
+            self.cursor.executescript(sql_commands)
+            self.conn.commit()
 
-        with open(SQL_FILEPATH, "r", encoding='utf-8') as sql_file:
-            sql_commands = sql_file.read()
+    def create_user(self, email, password):
+        """Save user data to database"""
+        insert_query = "INSERT INTO user_profile (email, password) VALUES (?, ?);"
+        self.cursor.execute(insert_query, (email, password))
+        self.conn.commit()
 
-        cursor.executescript(sql_commands)
-        conn.commit()
-        conn.close()
-
-
-def create_user(email, password):
-    """Save user data to database"""
-
-    conn = sqlite3.connect(DB_FILEPATH)
-    cursor = conn.cursor()
-
-    # SQL INSERT statement
-    insert_query = "INSERT INTO user_profile (email, password) VALUES (?, ?);"
-
-    # Execute the INSERT statement
-    cursor.execute(insert_query, (email, password))
-
-    # Commit the transaction and close the connection
-    conn.commit()
-    cursor.close()
-    conn.close()
+    def close_conn(self):
+        """Close the connection and cursor"""
+        self.cursor.close()
+        self.conn.close()
 
 
 def center_window(window, width, height):
     """Center a window on the screen using the provided dimensions"""
-
-    # Get the center position
     x = (window.winfo_screenwidth() - width) // 2
     y = (window.winfo_screenheight() - height) // 2
 
-    # Set the window in the center
     window.geometry(f"{width}x{height}+{x}+{y}")
     window.update_idletasks()
 
 
 def is_valid_email(email):
     """Check for a valid email address format"""
-
     email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     return re.match(email_pattern, email)
 
 
 def is_valid_password(password):
     """Check for valid password"""
+    password_pattern = string.ascii_letters + string.digits + "!@#$%^&*()[-]_=+{}|:;<>,."
+    for letter in password:
+        if letter not in password_pattern:
+            return False
+    return True
 
-    password_pattern = re.compile(r'^[a-zA-Z0-9!@#$%^&*()[-]_=+{}|:;<>,.?]+$')
-    return re.match(password_pattern, password)
+
+print(is_valid_password("snvdnsknsd/n"))
+
+    # password_pattern = re.compile(r'^[a-zA-Z0-9!@#$%^&*()[-]_=+{}|:;<>,.?]+$')
+    # return re.match(password_pattern, password)
