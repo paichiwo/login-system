@@ -66,9 +66,3 @@ def is_valid_password(password):
         if letter not in password_pattern:
             return False
     return True
-
-
-print(is_valid_password("snvdnsknsd/n"))
-
-    # password_pattern = re.compile(r'^[a-zA-Z0-9!@#$%^&*()[-]_=+{}|:;<>,.?]+$')
-    # return re.match(password_pattern, password)
