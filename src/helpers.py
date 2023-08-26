@@ -17,20 +17,21 @@ def resource_path(relative_path):
 class Database:
     """Database manipulation methods"""
     def __init__(self):
-        self.SQL_FILEPATH = resource_path('db\\db.sql')
-        self.DB_FILEPATH = resource_path('db\\db.db')
+        self.SQL_FILEPATH = resource_path('db/db.sql')
+        self.DB_FILEPATH = resource_path('db/db.db')
 
         self.conn = sqlite3.connect(self.DB_FILEPATH)
         self.cursor = self.conn.cursor()
 
     def create_db(self):
         """Create a new database using an .sql file"""
-        if not os.path.exists(self.DB_FILEPATH) and os.path.exists(self.SQL_FILEPATH):
-            with open(self.SQL_FILEPATH, "r", encoding='utf-8') as sql_file:
-                sql_commands = sql_file.read()
-
+        with open(self.SQL_FILEPATH, "r", encoding='utf-8') as sql_file:
+            sql_commands = sql_file.read()
+        try:
             self.cursor.executescript(sql_commands)
             self.conn.commit()
+        except sqlite3.Error as e:
+            print(e)
 
     def create_user(self, email, password):
         """Save user data to database"""
@@ -43,12 +44,13 @@ class Database:
         select_query = "SELECT * FROM user_profile WHERE email = ? AND password = ?;"
         self.cursor.execute(select_query, (email, password))
         user_data = self.cursor.fetchone()
+        if user_data:
+            return True
+        else:
+            return False
 
-        return True if user_data else False
-
-    def close_conn(self):
-        """Close the connection and cursor"""
-        self.cursor.close()
+    def close_db(self):
+        """Close the database connection"""
         self.conn.close()
 
 

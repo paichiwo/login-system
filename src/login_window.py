@@ -111,7 +111,7 @@ class LoginApp(ctk.CTk):
         """Create user in the database"""
         email = self.user_entry.get()
         password = self.user_pass.get()
-        password_confirmation = self.confirm_user_pass
+        password_confirmation = self.confirm_user_pass.get()
 
         if password == password_confirmation:
             if is_valid_email(email):
