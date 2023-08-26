@@ -1,10 +1,10 @@
 import os.path
-from src.helpers import Database
+from src.database import Database
 from src.login_window import LoginApp
 
 
 def main():
-    """Initialize database and create a login window"""
+    """Initialize a database and create a login window"""
     if not os.path.exists('./db/db.db'):
         Database().create_db()
 
@@ -18,4 +18,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

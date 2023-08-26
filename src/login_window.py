@@ -4,7 +4,7 @@ import customtkinter as ctk
 from tkinter import BOTTOM
 from src.app_window import AppWindow
 from src.helpers import center_window, is_valid_email, is_valid_password
-from src.helpers import Database
+from src.database import Database
 
 
 class LoginApp(ctk.CTk):
