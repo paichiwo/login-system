@@ -2,7 +2,7 @@ BEGIN TRANSACTION;
 
 -- Create User Profile table
 CREATE TABLE user_profile (
-    id SERIAL PRIMARY KEY,
+    id SERIAL INTEGER PRIMARY KEY AUTOINCREMENT,
     email VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL
 );
