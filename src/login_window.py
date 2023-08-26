@@ -1,5 +1,4 @@
 import sqlite3
-
 import customtkinter as ctk
 from tkinter import BOTTOM
 from src.app_window import AppWindow
