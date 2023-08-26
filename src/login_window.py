@@ -90,14 +90,11 @@ class LoginApp(ctk.CTk):
 
     def login(self):
         """Login button callback"""
-        username = "admin@test.com"
-        password = "123"
+        email = self.user_entry.get()
+        password = self.user_pass.get()
 
-        # Check if valid email
         if is_valid_email(self.user_entry.get()):
-
-            # If credentials ok destroy login_window and open the app
-            if self.user_entry.get() == username and self.user_pass.get() == password:
+            if Database().validate_user(email, password):
                 self.destroy()
                 app = AppWindow()
                 app.mainloop()
