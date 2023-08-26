@@ -38,6 +38,14 @@ class Database:
         self.cursor.execute(insert_query, (email, password))
         self.conn.commit()
 
+    def validate_user(self, email, password):
+        """Validate user credentials"""
+        select_query = "SELECT * FROM user_profile WHERE email = ? AND password = ?;"
+        self.cursor.execute(select_query, (email, password))
+        user_data = self.cursor.fetchone()
+
+        return True if user_data else False
+
     def close_conn(self):
         """Close the connection and cursor"""
         self.cursor.close()
