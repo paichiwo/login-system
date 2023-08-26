@@ -71,7 +71,7 @@ def is_valid_email(email):
 
 def is_valid_password(password):
     """Check for valid password"""
-    password_pattern = string.ascii_letters + string.digits + "!@#$%^&*()[-]_=+{}|:;<>,."
+    password_pattern = string.ascii_letters + string.digits + "!@#$&-_"
     for letter in password:
         if letter not in password_pattern:
             return False
