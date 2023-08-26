@@ -3,7 +3,8 @@ import sqlite3
 import customtkinter as ctk
 from tkinter import BOTTOM
 from src.app_window import AppWindow
-from src.helpers import center_window, is_valid_email, create_user, is_valid_password
+from src.helpers import center_window, is_valid_email, is_valid_password
+from src.helpers import Database
 
 
 class LoginApp(ctk.CTk):
@@ -157,7 +158,7 @@ class SignUpWindow(ctk.CTk):
             if len(password) >= 6:
                 if is_valid_password(password):
                     try:
-                        create_user(email, password)
+                        Database().create_user(email, password)
                     except sqlite3.Error as error:
                         self.message_label.configure(text=f"SQLite Error: {error}")
                     self.message_label.configure(text="Account created\nYou can now log in")
@@ -173,6 +174,3 @@ class SignUpWindow(ctk.CTk):
         self.destroy()
         login_app = LoginApp()
         login_app.mainloop()
-
-    def delete_invalid_password_character(self):
-        pass

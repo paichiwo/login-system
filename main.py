@@ -1,4 +1,4 @@
-from src.helpers import create_database
+from src.helpers import Database
 from src.login_window import LoginApp
 
 # finish login func
@@ -8,7 +8,7 @@ from src.login_window import LoginApp
 def main():
     """Initialize database and create a login window"""
 
-    create_database()
+    Database().create_db()
 
     login_app = LoginApp()
     login_app.mainloop()
