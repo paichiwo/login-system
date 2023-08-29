@@ -11,7 +11,7 @@ The app is built on top of the **tkinter** library and uses the custom **customt
 
 ## Look and feel
 
-![1.png](img/screenshot/1.png)![2.png](img/screenshot/2.png)
+![1.png](screenshot/1.png)![2.png](screenshot/2.png)
 
 ## **Installation**
 
