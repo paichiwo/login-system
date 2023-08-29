@@ -24,7 +24,7 @@ class LoginApp(ctk.CTk):
         self.signup_button = None
         self.cancel_button = None
 
-        self.root_label = ctk.CTkLabel(self, text=".PETS", font=("Any", 26, "bold"))
+        self.root_label = ctk.CTkLabel(self, text="LOGIN SYSTEM", font=("Any", 26, "bold"))
         self.root_label.pack(pady=20)
 
         self.login_frame()
