@@ -1,3 +1,8 @@
+# PyCharm files
 /venv/
 /.idea/
+/__pycache__/
+
+# Project files
 *.db
+/tests/.pytest_cache/
